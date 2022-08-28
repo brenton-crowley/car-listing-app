@@ -8,9 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @ObservedObject private var model = ViewModel()
+    
+    @State private var selectedCardId: UUID?
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        
+        NavigationView {
+            ScrollView {
+                ForEach(model.cars) { car in
+                    ExpandableCardView(selectedCardId: $selectedCardId,car: car)
+                        .onTapGesture {
+
+                            withAnimation {
+                                selectedCardId = selectedCardId == car.id ? nil : car.id                                
+                            }
+                        }
+                }
+                .padding()
+            }
+            .background(
+                Color.secondary
+                    .opacity(0.1)
+            )
+        }
     }
 }
 
