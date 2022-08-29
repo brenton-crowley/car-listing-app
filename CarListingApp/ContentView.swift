@@ -12,8 +12,8 @@ struct ContentView: View {
     private enum PriceFilter: Double, CaseIterable {
         case one = 50000.0
         case two = 100000.0
-        case three = 150000.0
-        case four = 300000.0
+        case three = 200000.0
+        case four = 400000.0
         
         var labelText: String {
             let formatter = NumberFormatter()
@@ -31,15 +31,13 @@ struct ContentView: View {
     
     @State private var selectedCardId: UUID?
     @State private var selectedPriceFilter: PriceFilter = PriceFilter.allCases.last!
+    @State private var filterText: String = ""
     
     var filteredListOfCars: [Car] {
         model.cars.filter({ $0.marketPrice < selectedPriceFilter.rawValue })
     }
     
     var body: some View {
-        
-        // segmented control to filter between name and price
-        // searchable text based on filter.
         
         NavigationView {
             VStack (alignment: .leading) {
