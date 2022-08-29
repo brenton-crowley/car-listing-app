@@ -45,7 +45,7 @@ struct ExpandableCardView: View {
     var imageView: some View {
         Image(car?.model ?? "Tacoma")
             .resizable()
-            .scaledToFill()
+            .aspectRatio(contentMode: .fill)
     }
     
     var detailsView: some View {
@@ -84,10 +84,10 @@ struct ExpandableCardView: View {
     var detailBody: some View {
         VStack (alignment: .leading, spacing: 20.0) {
             // Pros
-            bulletList(car?.prosList ?? ["One", "Two", "Three"],
+            bulletList(cleanList(car?.prosList ?? ["One", "Two", "Three"]),
                        withTitle: "Pros")
             // Cons
-            bulletList(car?.consList ?? ["One", "Two", "Three"],
+            bulletList(cleanList(car?.consList ?? ["One", "Two", "Three"]),
                        withTitle: "Cons")
         }
     }
@@ -102,10 +102,7 @@ struct ExpandableCardView: View {
     @ViewBuilder
     private func bulletList(_ list:[String], withTitle title: String) -> some View {
         
-        var list = list
-        list.removeAll { $0.isEmpty }
-        
-        return VStack (alignment: .leading) {
+        VStack (alignment: .leading) {
             Text(title)
                 .font(.subheadline)
                 .fontWeight(.bold)
@@ -119,9 +116,12 @@ struct ExpandableCardView: View {
                     .padding(.leading)
                 
             }
-            
         }
-        
+    }
+    
+    private func cleanList(_ list:[String]?) -> [String] {
+        if var list = list { list.removeAll { $0.isEmpty } }
+        return list ?? []
     }
 }
 

@@ -14,5 +14,9 @@ struct Car: Decodable, Identifiable {
     var make, model: String
     var consList, prosList: [String]
     
-    let id: UUID = UUID()    
+    let id: UUID = UUID()
+    
+    private enum CodingKeys: String, CodingKey {
+        case customerPrice, marketPrice, rating, make, model, consList, prosList
+    }
 }

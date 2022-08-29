@@ -34,5 +34,4 @@ class ViewModel: ObservableObject {
         dump(cars)
         
     }
-    
 }

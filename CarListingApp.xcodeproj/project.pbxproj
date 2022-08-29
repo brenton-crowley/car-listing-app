@@ -59,6 +59,7 @@
 		846BC50128AA17A700DFE884 /* CarListingApp */ = {
 			isa = PBXGroup;
 			children = (
+				84B63C4028BC37F800D1E4FF /* utils */,
 				846BC51C28AA1A8300DFE884 /* data */,
 				846BC51628AA199200DFE884 /* viewModel */,
 				846BC50228AA17A700DFE884 /* CarListingAppApp.swift */,
@@ -109,6 +110,13 @@
 				846BC51028AA188E00DFE884 /* car_list.json */,
 			);
 			path = data;
+			sourceTree = "<group>";
+		};
+		84B63C4028BC37F800D1E4FF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -31,7 +31,9 @@ struct ContentView: View {
             .background(
                 Color.secondary
                     .opacity(0.1)
-            )
+            ).onAppear {
+                selectedCardId = model.cars.first?.id
+            }
         }
     }
 }
